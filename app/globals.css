@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Glowing border animation */
+.glow-container {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  padding: 2px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.glow-effect {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    #ff4800 10%,
+    #ff4800 35%,
+    transparent 40%,
+    transparent 60%,
+    #0070f3 65%,
+    #0070f3 90%,
+    transparent 95%
+  );
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Button styles */
+.border-button-light-blur {
+  position: relative;
+  border-radius: 9999px;
+  border-width: 3px;
+  border-color: transparent;
+}
+
+.border-button-light-blur:after,
+.border-button-light-blur:before {
+  content: "";
+  position: absolute;
+}
+
+.border-button-light-blur:after,
+.border-button-light-blur:before {
+  box-sizing: content-box;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  border-color: transparent;
+}
+
+.border-button-light-blur:after {
+  left: -3px;
+  top: -3px;
+  z-index: 20;
+  border-width: 3px;
+  --tw-blur: blur(15px);
+  background: linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(91.88deg, rgba(255, 137, 100, 0.2) 46.45%, #cd3100 98.59%) border-box;
+}
+
+.border-button-light-blur:after,
+.border-button-light-blur:before {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate)
+    var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.border-button-light-blur:before {
+  left: -0.125rem;
+  top: -0.125rem;
+  z-index: 10;
+  border-width: 2px;
+  --tw-blur: blur(2px);
+  background: linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(97.68deg, rgba(255, 177, 153, 0) 38.1%, rgba(255, 177, 153, 0.2) 82.47%, #ff7950 93.3%) border-box;
+}
+
+.border-button-light {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-color: transparent;
+  background: linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(
+      103.7deg,
+      hsla(15, 25%, 65%, 0.1) 38.66%,
+      rgba(233, 132, 99, 0.1) 68.55%,
+      #e98463 85.01%,
+      #fff 92.12%
+    )
+    border-box;
+}
+
+.border-button-light:before {
+  content: "";
+  position: absolute;
+  left: -0.125rem;
+  top: -0.125rem;
+  z-index: 30;
+  box-sizing: content-box;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  border-width: 2px;
+  border-color: transparent;
+  --tw-blur: blur(7px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate)
+    var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  background: linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(91.96deg, rgba(255, 177, 153, 0) 6.11%, rgba(255, 177, 153, 0.2) 53.57%, #ff7950 93.6%) border-box;
+}
+
+.border-button-grey:before {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-color: transparent;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  content: "";
+  transition-duration: .2s;
+  background: linear-gradient(#090a0c, #090a0c) padding-box,
+    linear-gradient(180deg, hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0.15)) border-box;
+}
+
+.border-button-grey:after,
+.border-button-grey:hover:before {
+  content: "";
+  opacity: 0;
+}
+
+.border-button-grey:after {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-color: transparent;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: .2s;
+  background: linear-gradient(#17171a, #17171a) padding-box,
+    linear-gradient(180deg, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.25)) border-box;
+}
+
+.border-button-grey:hover:after {
+  content: "";
+  opacity: 1;
+}
+
